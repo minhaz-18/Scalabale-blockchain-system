@@ -1,6 +1,9 @@
 import os
 
+dir = os.getcwd()
+os.chdir("src")
 src_dir = os.getcwd()
+print(src_dir)
 
 
 # project
