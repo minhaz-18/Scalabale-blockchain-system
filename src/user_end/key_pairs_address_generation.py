@@ -1,4 +1,5 @@
-from pycoin.ecdsa import generator_secp256k1
+#from pycoin.ecdsa import generator_secp256k1
+from pycoin.ecdsa.secp256k1 import secp256k1_generator
 import secrets
 import json
 import os
@@ -7,6 +8,7 @@ import time
 import hashlib
 
 code_dir = os.getcwd()
+os.chdir("..")
 os.chdir("src")
 src = os.getcwd()
 sys.path.insert(1, src)  # for importing folder_structure.py
