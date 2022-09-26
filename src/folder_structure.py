@@ -1,11 +1,11 @@
 import os
 
-dir = os.getcwd()
-print(dir)
-os.chdir("src")
+# dir = os.getcwd()
+# print(dir)
+# os.chdir("src")
+# src_dir = os.getcwd()
+# print(src_dir)
 src_dir = os.getcwd()
-print(src_dir)
-
 
 # project
 def project():
