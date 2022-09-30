@@ -1,5 +1,5 @@
-#from pycoin.ecdsa import generator_secp256k1
-from pycoin.ecdsa.secp256k1 import secp256k1_generator
+from pycoin.ecdsa import generator_secp256k1
+# from pycoin.ecdsa.secp256k1 import secp256k1_generator
 import secrets
 import json
 import os
@@ -8,19 +8,23 @@ import time
 import hashlib
 
 code_dir = os.getcwd()
-os.chdir("..")
-os.chdir("src")
-src = os.getcwd()
-sys.path.insert(1, src)  # for importing folder_structure.py
-os.chdir(code_dir)  # returning to the code dir
+print(code_dir)
+# os.chdir("..")
+# os.chdir("src")
+# src = os.getcwd()
+sys.path.insert(1, code_dir)  # for importing folder_structure.py
+# os.chdir(code_dir)  # returning to the code dir
 from folder_structure import output_key_pairs, output_addresses
 
 
 def key_pairs_generation():
+    # privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
     privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
+    
     private_key_hex = hex(privKey)  # ultimate private key
 
     # public key generation
+    # pubKey = (generator_secp256k1 * privKey).pair()  # generated public key
     pubKey = (generator_secp256k1 * privKey).pair()  # generated public key
     public_key_hex_tuple = (hex(pubKey[0]), hex(pubKey[1]))
     public_key_hex = hex(pubKey[0]) + hex(pubKey[1])  # ultimate public key
