@@ -7,13 +7,6 @@ import sys
 import time
 import hashlib
 
-<<<<<<< HEAD
-code_dir = os.getcwdb()
-os.chdir("E:\BlockChain\Scalabale-blockchain-system\src")
-src = os.getcwd()
-sys.path.insert(1, src)  # for importing folder_structure.py
-os.chdir(code_dir)  # returning to the code dir
-=======
 code_dir = os.getcwd()
 print(code_dir)
 # os.chdir("..")
@@ -21,18 +14,10 @@ print(code_dir)
 # src = os.getcwd()
 sys.path.insert(1, code_dir)  # for importing folder_structure.py
 # os.chdir(code_dir)  # returning to the code dir
->>>>>>> a2887fd832debb2a7870c4f6420e276b86a9cd5a
 from folder_structure import output_key_pairs, output_addresses
 
 
 def key_pairs_generation():
-<<<<<<< HEAD
-    privKey = secrets.randbelow(secp256k1_generator.order())  # generated private key
-    private_key_hex = hex(privKey)  # ultimate private key
-
-    # public key generation
-    pubKey = (secp256k1_generator * privKey).pair()  # generated public key
-=======
     # privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
     privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
     
@@ -41,7 +26,6 @@ def key_pairs_generation():
     # public key generation
     # pubKey = (generator_secp256k1 * privKey).pair()  # generated public key
     pubKey = (generator_secp256k1 * privKey).pair()  # generated public key
->>>>>>> a2887fd832debb2a7870c4f6420e276b86a9cd5a
     public_key_hex_tuple = (hex(pubKey[0]), hex(pubKey[1]))
     public_key_hex = hex(pubKey[0]) + hex(pubKey[1])  # ultimate public key
     keys_dict = {"public_key": public_key_hex, "private_key": private_key_hex}
