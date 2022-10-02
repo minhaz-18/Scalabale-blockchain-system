@@ -30,13 +30,13 @@ def key_pairs_generation():
     public_key_hex = hex(pubKey[0]) + hex(pubKey[1])  # ultimate public key
     keys_dict = {"public_key": public_key_hex, "private_key": private_key_hex}
 
-    # json_formatted_key_dict = json.dumps(keys_dict, indent=4)
+    json_formatted_key_dict = json.dumps(keys_dict, indent=4)
 
-    return keys_dict
+    return json_formatted_key_dict
 
 
 def address_generation():
-    publickey = key_pairs_generation()["public_key"]
+    publickey = json.loads(key_pairs_generation())["public_key"]
     # creating the address block with public key and timestamp
     timestamp = time.time()
     block = {"public_key": publickey, "Timestamp": timestamp}
@@ -44,8 +44,8 @@ def address_generation():
     address = hashlib.sha256(json_format).hexdigest()
 
     address_block = {"address": address, "public_key": publickey, "timestamp": timestamp}
-    # json_formatted_address_block = json.dumps(address_block, indent=4)
-    return address_block
+    json_formatted_address_block = json.dumps(address_block, indent=4)
+    return json_formatted_address_block
 
 
 def write_files(folder_path, file_real_name, data):
@@ -60,7 +60,7 @@ def main_file():
     # key_pairs location
     key_folder_path = output_key_pairs()[0]
     # key_folder_lst = output_key_pairs()[1]
-    key_data = key_pairs_generation()
+    key_data = json.loads(key_pairs_generation())
     public_key = key_data["public_key"]
     key_pairs_file_name = public_key + ".json"
     write_files(key_folder_path, key_pairs_file_name, key_data)
@@ -69,7 +69,7 @@ def main_file():
     # key_pairs location
     address_folder_path = output_addresses()[0]
     # key_folder_lst = output_key_pairs()[1]
-    address_data = address_generation()
+    address_data = json.loads(address_generation())
     # address = address_data["public_key"]
     address_file_name = public_key + ".json"
     write_files(address_folder_path, address_file_name, address_data)
