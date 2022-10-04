@@ -8,7 +8,7 @@ import time
 import hashlib
 
 code_dir = os.getcwd()
-print(code_dir)
+#print(code_dir)
 # os.chdir("..")
 # os.chdir("src")
 # src = os.getcwd()
