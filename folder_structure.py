@@ -1,10 +1,10 @@
 import os
 
 dir = os.getcwd()
-print(dir)
+print("Folder Str DIR",dir)
 os.chdir("src")
 src_dir = os.getcwd()
-print(src_dir)
+#print(src_dir)
 # src_dir = os.getcwd()
 
 # project
@@ -24,11 +24,13 @@ def create_folder(name, lst):
         os.chdir(name)
         folder_dir = os.getcwd()
         folder_dir_lst = os.listdir(folder_dir)
+        os.chdir(dir)
     else:
-        # print(f"{name} already exists")
+        print(f"{name} already exists")
         os.chdir(name)
         folder_dir = os.getcwd()
         folder_dir_lst = os.listdir(folder_dir)
+        os.chdir(dir)
     return folder_dir, folder_dir_lst
 
 
@@ -36,6 +38,7 @@ def create_folder(name, lst):
 def src_user_end():
     os.chdir(src_dir)
     lst = os.listdir(src_dir)
+    print("verify",os.getcwd()) 
     return create_folder("user_end", lst)
 
 
