@@ -13,7 +13,7 @@ sys.path.insert(1, user_end_dir)
 # key_pair_relative = src_user_end()[0]
 # print("nwsdsa", key_pair_relative)
 # sys.path.append(key_pair_relative)
-from key_pairs_address_generation import main_file
+from key_pairs_address_generation import *
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -25,6 +25,10 @@ def index():
 def my_link():
   print ('I got clicked!')
   # my_function()
+  key_pairs = key_pairs_generation()
+  print(key_pairs)
+  addresses = address_generation()
+  print(addresses)
   main_file()
   return render_template('out.html')
 
