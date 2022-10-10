@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 
 # Current directory: E:\Extra\Minhaz\Projects\Scalabale-blockchain-system\src
-# Starting this code, the location should be in src directory
+# Starting of this code, the location should be in src directory
 # Otherwise the code will throw error or the structure of the folders will be disrupted
 current_dir = Path.cwd()
 print(f"Current directory: {current_dir}")

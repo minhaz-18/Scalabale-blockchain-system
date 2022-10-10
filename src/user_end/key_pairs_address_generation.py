@@ -7,19 +7,17 @@ import sys
 import time
 import hashlib
 
+# Current directory: E:\Extra\Minhaz\Projects\Scalabale-blockchain-system\src\user_end
+# Starting of this code, the location should be in src\user_end directory
+# Otherwise the code will throw error or the structure of the folders will be disrupted
 code_dir = os.getcwd()
 print(code_dir)
 os.chdir("..")
 src_dir = os.getcwd()
-# print(os.getcwd())
-# print(os.listdir())
-# os.chdir("src")
-# src = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
-# # os.chdir(code_dir)  # returning to the code dir
 from folder_structure import output_key_pairs, output_addresses
-#
-#
+
+
 def key_pairs_generation():
     # privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
     privKey = secrets.randbelow(generator_secp256k1.order())  # generated private key
@@ -36,6 +34,7 @@ def key_pairs_generation():
     json_formatted_key_dict = json.dumps(keys_dict, indent=4)
 
     return json_formatted_key_dict
+
 
 #
 def address_generation():
@@ -79,4 +78,3 @@ def main_file():
 
 
 main_file()
-
