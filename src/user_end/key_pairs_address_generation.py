@@ -39,13 +39,14 @@ def key_pairs_generation():
 #
 def address_generation():
     publickey = json.loads(key_pairs_generation())["public_key"]
+    privatekey = json.loads(key_pairs_generation())["private_key"]
     # creating the address block with public key and timestamp
     timestamp = time.time()
     block = {"public_key": publickey, "Timestamp": timestamp}
     json_format = json.dumps(block, sort_keys=True).encode()
     address = hashlib.sha256(json_format).hexdigest()
 
-    address_block = {"address": address, "public_key": publickey, "timestamp": timestamp}
+    address_block = {"address": address, "public_key": publickey,"private_key": privatekey, "timestamp": timestamp}
     json_formatted_address_block = json.dumps(address_block, indent=4)
     return json_formatted_address_block
 

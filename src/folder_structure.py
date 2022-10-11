@@ -19,10 +19,11 @@ def project():
 
 def create_folder(name):
     if name.exists():
-        print(f"'{name}' already exists.")
+        # print(f"'{name}' already exists.")
+        pass
     else:
         os.makedirs(name)
-        print(f"'{name}' is created")
+        # print(f"'{name}' is created")
     return name
 
 
