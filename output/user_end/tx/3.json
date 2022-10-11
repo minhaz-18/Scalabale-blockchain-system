@@ -1,0 +1,26 @@
+{
+  "message": {
+    "SenderAddress": [
+      [
+        "0761a445769c1464f71e24a2e332466a31a1e70cd51829ba006a02b64e2813bf",
+        2
+      ]
+    ],
+    "ReceiverAddress": [
+      {
+        "b52fad7bee3d8e0003ff5bf5d3b35faee68eae8f194a9764de70ab1235a5bbe2": 25000
+      },
+      {
+        "74bf5ef110e6a843759cc9e6c69347867c99358d08cab1e25fb2355e7026f186": 25000
+      },
+      {
+        "27c9c1b2520fd43c4e7a59482834443027ad143cfb2bb8d1e2370a8cffac9e1d": 25000
+      },
+      {
+        "776dee1abb809ef799dfc88979347baf78a4a0286402e28f697ddd9e986f1aa4": 25000
+      }
+    ],
+    "PublicKey": "0x16b4443b8a67211bc4d651a75a7f5058cf224dfec535881760b913b8cd64baf90x5e742464e34132217d96226212c1daa36cd16dcb9150e26be5da095c7ab24ebf"
+  },
+  "signature": "0xc2d6bf66e0b5d023d2096ac9f17b386b4642d1cd2fa23b26fcd2783804b2c5aa0xe207ca266c086da76cb8784c8776c2e037e5bb8ebb2aee2c928c89374ad2d8af"
+}

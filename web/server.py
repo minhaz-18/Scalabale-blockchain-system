@@ -23,7 +23,7 @@ def index():
 
 @app.route('/my-link/')
 def my_link():
-  print ('I got clicked!')
+  #print ('I got clicked!')
   # my_function()
   key_pairs = key_pairs_generation()
   print(key_pairs)
