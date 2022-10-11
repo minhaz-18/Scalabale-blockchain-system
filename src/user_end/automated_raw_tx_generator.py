@@ -16,7 +16,7 @@ from raw_tx_generator import main
 # for the second tx and the tx coming after that sender_info code will be changed, sender address will be the
 # receiving address of the previous transaction
 def initial_sender_info_generator():
-    block_number = 1
+    block_number = 0
     sender_address_file = json.loads(address_generation())
     sender_address = sender_address_file["address"]
     sender_public_key = sender_address_file["public_key"]
@@ -41,7 +41,7 @@ def receiver_info_generator(receiver_address_lst_data, number_of_addresses, amou
 
 
 def receiver_address_list(block_number, receiver_address_lst_data):
-    name = "block_" + str(block_number) + "_receiver_addresses.txt"
+    name = "block_" + str(block_number + 1) + "_receiver_addresses.txt"
     receiver_address_list_file_name = Path(src_user_end()) / name
     with open(receiver_address_list_file_name, 'w') as tx:
         json.dump(receiver_address_lst_data, tx, indent=2)
@@ -51,22 +51,22 @@ def receiver_address_list(block_number, receiver_address_lst_data):
     # print(receiver_address_list_file_name)
 
 
-def initial_tx_generator():
+def initial_tx_generator(number_of_addresses, amount):
     sender_info = initial_sender_info_generator()[0]
     sender_public_key = initial_sender_info_generator()[1]
     sender_private_key = initial_sender_info_generator()[2]
     receiver_address_lst_data = []
-    i_receiver_info_generator_data = receiver_info_generator(receiver_address_lst_data, 2, 100000)
+    i_receiver_info_generator_data = receiver_info_generator(receiver_address_lst_data, number_of_addresses, amount)
     receiver_info = i_receiver_info_generator_data[0]
     receiver_address_lst_data = i_receiver_info_generator_data[1]
-    receiver_address_list(1, receiver_address_lst_data)
+    receiver_address_list(0, receiver_address_lst_data)
     main(sender_info, receiver_info, sender_public_key, sender_private_key)
     # print("initial receiver_address_list: ", receiver_address_lst_data)
 
 
 def multiple_tx_generator(block_number, number_of_receiver_addresses_per_tx, amount):
     m_receiver_address_lst_data = []
-    r_name = "block_" + str(block_number - 1) + "_receiver_addresses.txt"
+    r_name = "block_" + str(block_number) + "_receiver_addresses.txt"
     receiver_address_list_file_name = Path(src_user_end()) / r_name
     # print(f"{str(block_number - 1)} receiver_address_list_file_name: ", receiver_address_list_file_name)
     with open(receiver_address_list_file_name, 'r') as file:
@@ -84,5 +84,16 @@ def multiple_tx_generator(block_number, number_of_receiver_addresses_per_tx, amo
     # print("multiple receiver_address_list: ", m_receiver_address_lst_data)
 
 
-# initial_tx_generator()
-multiple_tx_generator(3, 100, 200)
+# initial_tx_generator(number_of_addresses=21, amount=100000)
+# multiple_tx_generator(block_number=1, number_of_receiver_addresses_per_tx=1000, amount=100)
+
+
+# def test(block_number):
+#     r_name = "block_" + str(block_number) + "_receiver_addresses.txt"
+#     receiver_address_list_file_name = Path(src_user_end()) / r_name
+#     # print(f"{str(block_number - 1)} receiver_address_list_file_name: ", receiver_address_list_file_name)
+#     with open(receiver_address_list_file_name, 'r') as file:
+#         receiver_address_lst_data = json.loads(file.read())
+#     print(f"total receiver addresses: {len(receiver_address_lst_data)}")
+#
+# test(block_number=1)
