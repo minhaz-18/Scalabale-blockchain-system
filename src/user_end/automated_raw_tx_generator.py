@@ -85,4 +85,4 @@ def multiple_tx_generator(block_number, number_of_receiver_addresses_per_tx, amo
 
 
 # initial_tx_generator()
-multiple_tx_generator(2, 4, 25000)
+multiple_tx_generator(3, 100, 200)

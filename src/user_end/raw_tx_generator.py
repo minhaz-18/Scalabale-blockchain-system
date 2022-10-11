@@ -1,6 +1,4 @@
-<<<<<<< HEAD
-def raw(hsd,sadha,dasda):
-=======
+
 from pycoin.ecdsa import generator_secp256k1, sign
 import hashlib
 import json
@@ -91,4 +89,3 @@ def main(sender_info, receiver_info, sender_public_key, sender_private_key):
 
 
 # main()
->>>>>>> ca18610f965f0e05bf40538a7261e535583e72f5
