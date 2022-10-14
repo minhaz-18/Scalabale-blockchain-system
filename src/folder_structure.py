@@ -99,10 +99,22 @@ def output_tx():
     return create_folder(output_tx_dir)
 
 
+# project/output/user_end/used_tx
+def output_used_tx():
+    output_used_tx_dir = Path(project()) / "output" / "user_end" / "used_tx"
+    return create_folder(output_used_tx_dir)
+
+
 # project/output/user_end/tx_cid
 def output_tx_cid():
     output_tx_cid_dir = Path(project()) / "output" / "user_end" / "tx_cid"
     return create_folder(output_tx_cid_dir)
+
+
+# project/output/user_end/used_tx_cid
+def output_used_tx_cid():
+    output_used_tx_cid_dir = Path(project()) / "output" / "user_end" / "used_tx_cid"
+    return create_folder(output_used_tx_cid_dir)
 
 
 # project/output/miner_end
