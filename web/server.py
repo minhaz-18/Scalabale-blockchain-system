@@ -1,3 +1,4 @@
+import json
 import os
 import sys
 from flask import Flask, render_template, url_for
@@ -20,17 +21,15 @@ app = Flask(__name__, static_url_path='/static')
 @app.route('/')
 def index():
   return render_template('index.html')
-
 @app.route('/my-link/')
 def my_link():
   #print ('I got clicked!')
   # my_function()
   key_pairs = key_pairs_generation()
-  print(key_pairs)
   addresses = address_generation()
+  addresses1 = json.loads(addresses)
   print(addresses)
   main_file()
-  return render_template('out.html')
-
+  return render_template('out.html',addresses=addresses1)
 if __name__ == '__main__':
   app.run(debug=True)
