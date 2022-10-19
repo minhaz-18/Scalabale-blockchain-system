@@ -32,7 +32,6 @@ def key_pairs_generation():
     keys_dict = {"public_key": public_key_hex, "private_key": private_key_hex}
 
     json_formatted_key_dict = json.dumps(keys_dict, indent=4)
-
     return json_formatted_key_dict
 
 
