@@ -9,7 +9,13 @@ import json
 import time
 import random
 import os
-
+import sys
+p2p_receiving_code_dir = os.getcwd()
+print(f"This codes directory: {p2p_receiving_code_dir}")
+os.chdir("..")
+src_dir = os.getcwd()
+sys.path.insert(1, src_dir)  # for importing folder_structure.py
+from folder_structure import output_tx, output_tx_cid, output_used_tx
 
 class MyOwnPeer2PeerNode(Node):
     counter = 0

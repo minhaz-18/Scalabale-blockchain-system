@@ -11,7 +11,7 @@ import sys
 import time
 import json
 import os
-sys.path.insert(0, '..') # Import the files where the modules are located
+# sys.path.insert(0, '..') # Import the files where the modules are located
 
 from MyOwnPeer2PeerNode import MyOwnPeer2PeerNode
 
