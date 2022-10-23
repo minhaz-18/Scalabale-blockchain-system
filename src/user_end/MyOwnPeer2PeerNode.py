@@ -15,7 +15,11 @@ print(f"This codes directory: {p2p_receiving_code_dir}")
 os.chdir("..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
-from folder_structure import output_tx, output_tx_cid, output_used_tx
+from folder_structure import p2p_receiving_tx_cid, p2p_receiving_block_cid, src_user_end
+os.chdir(src_user_end())
+
+print("p2p_receiving_tx_cid: ", p2p_receiving_tx_cid())
+print("p2p_receiving_block_cid: ", p2p_receiving_block_cid())
 
 class MyOwnPeer2PeerNode(Node):
     counter = 0
@@ -59,7 +63,7 @@ class MyOwnPeer2PeerNode(Node):
         key_list = list(data.keys())
         if "Index" not in key_list:
             print("It's a transaction")
-            json_dir = "C:\\Users\\DELL\\Desktop\\Testing\\Test_1\\p2p_testing\\receiving_transaction_from_p2p"
+            json_dir = p2p_receiving_tx_cid()
             name = "sample_tx" + str(MyOwnPeer2PeerNode.counter) + ".json"
             t_fileName = os.path.join(json_dir, name)
 
@@ -68,14 +72,7 @@ class MyOwnPeer2PeerNode(Node):
                 MyOwnPeer2PeerNode.counter = MyOwnPeer2PeerNode.counter + 1
         else:
             print("It's a block")
-            block_dir = "C:\\Users\\DELL\\Desktop\\Testing\\Test_1\\p2p_testing\\receiving_block_from_p2p"
-            # creating directory-------------------------------------
-            try:
-                os.makedirs(block_dir)
-                print("Directory created successfully")
-            except FileExistsError:
-                print("Directory can not be created")
-            # --------------------------------------------------------
+            block_dir = p2p_receiving_block_cid
             block_num = data["Index"]
             block_name = "sample_block" + str(block_num) + ".json"
             b_fileName = os.path.join(block_dir, block_name)
