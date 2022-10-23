@@ -24,8 +24,9 @@ os.chdir(src_user_end())
 print("p2p_sending_tx_cid: ", p2p_sending_tx_cid())
 print("p2p_sending_block_cid: ", p2p_sending_block_cid())
 
-node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8001) ## My Laptop's Local IP ##
-#node_2 = MyOwnPeer2PeerNode("0.0.0.0", 8080) 
+# node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8001) ## My Laptop's Local IP ##
+node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## My Laptop's pubic IP ##
+#node_2 = MyOwnPeer2PeerNode("0.0.0.0", 8080)
 #node_3 = MyOwnPeer2PeerNode("127.0.0.1", 8003) ## My Local Host ##
 
 time.sleep(1)
@@ -37,7 +38,8 @@ node_1.start()
 time.sleep(1)
 
 #node_1.connect_with_node('103.149.142.66', 8001) ## Baten's PC ##
-node_1.connect_with_node('104.28.208.86', 8080) ## Sohan's PC ##
+# node_1.connect_with_node('104.28.208.86', 8080) ## Sohan's public PC ##
+node_1.connect_with_node('192.168.0.102', 8080) ## Sohan's local PC ##
 node_1.connect_with_node('103.149.142.66', 8001) ## My PC ##
 #node_1.connect_with_node('118.179.15.131', 8080) ## My PC ##
 
