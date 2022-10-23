@@ -24,8 +24,8 @@ os.chdir(src_user_end())
 print("p2p_sending_tx_cid: ", p2p_sending_tx_cid())
 print("p2p_sending_block_cid: ", p2p_sending_block_cid())
 
-# node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8001) ## My Laptop's Local IP ##
-node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## My Laptop's pubic IP ##
+node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8001) ## My Laptop's Local IP ##
+# node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## My Laptop's pubic IP ##
 #node_2 = MyOwnPeer2PeerNode("0.0.0.0", 8080)
 #node_3 = MyOwnPeer2PeerNode("127.0.0.1", 8003) ## My Local Host ##
 
