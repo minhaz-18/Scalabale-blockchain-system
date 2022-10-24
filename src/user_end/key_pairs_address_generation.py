@@ -37,8 +37,9 @@ def key_pairs_generation():
 
 #
 def address_generation():
-    publickey = json.loads(key_pairs_generation())["public_key"]
-    privatekey = json.loads(key_pairs_generation())["private_key"]
+    key_pair_info = json.loads(key_pairs_generation())
+    publickey = key_pair_info["public_key"]
+    privatekey = key_pair_info["private_key"]
     # creating the address block with public key and timestamp
     timestamp = time.time()
     block = {"public_key": publickey, "Timestamp": timestamp}

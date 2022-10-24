@@ -5,7 +5,7 @@ import os
 # Starting of this code, the location should be in src directory
 # Otherwise the code will throw error or the structure of the folders will be disrupted
 current_dir = Path.cwd()
-print(f"Current directory: {current_dir}")
+# print(f"Current directory: {current_dir}")
 
 
 def src():
@@ -129,9 +129,9 @@ def output_p2p():
     return create_folder(output_p2p_dir)
 
 
-# project/output/miner_end/p2p/receiving_block_cid
+# project/output/miner_end/p2p/receiving_hash_block
 def p2p_receiving_block_cid():
-    p2p_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "receiving_block_cid"
+    p2p_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "receiving_hash_block"
     return create_folder(p2p_receiving_block_cid_dir)
 
 
@@ -147,10 +147,34 @@ def p2p_sending_tx_cid():
     return create_folder(p2p_sending_tx_cid_dir)
 
 
-# project/output/miner_end/p2p/sending_block_cid
+# project/output/miner_end/p2p/sending_hash_block
 def p2p_sending_block_cid():
-    p2p_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "sending_block_cid"
+    p2p_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "sending_hash_block"
     return create_folder(p2p_sending_block_cid_dir)
+
+
+# project/output/miner_end/p2p/used_receiving_block_cid
+def p2p_used_receiving_block_cid():
+    p2p_used_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_receiving_block_cid"
+    return create_folder(p2p_used_receiving_block_cid_dir)
+
+
+# project/output/miner_end/p2p/used_receiving_tx_cid
+def p2p_used_receiving_tx_cid():
+    p2p_used_receiving_tx_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_receiving_tx_cid"
+    return create_folder(p2p_used_receiving_tx_cid_dir)
+
+
+# project/output/miner_end/p2p/used_sending_tx_cid
+def p2p_used_sending_tx_cid():
+    p2p_used_sending_tx_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_sending_tx_cid"
+    return create_folder(p2p_used_sending_tx_cid_dir)
+
+
+# project/output/miner_end/p2p/used_sending_block_cid
+def p2p_used_sending_block_cid():
+    p2p_used_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_sending_block_cid"
+    return create_folder(p2p_used_sending_block_cid_dir)
 
 
 # project/output/miner_end/ipfs
@@ -211,6 +235,12 @@ def verified_tx_used_raw_tx_fetched_from_ipfs():
 def output_raw_block():
     output_raw_block_dir = Path(project()) / "output" / "miner_end" / "raw_block"
     return create_folder(output_raw_block_dir)
+
+
+# project/output/miner_end/raw_block_for_ipfs_use
+def output_raw_block_for_ipfs_use():
+    output_raw_block_for_ipfs_use_dir = Path(project()) / "output" / "miner_end" / "raw_block_for_ipfs_use"
+    return create_folder(output_raw_block_for_ipfs_use_dir)
 
 
 # project/output/miner_end/raw_block_cid

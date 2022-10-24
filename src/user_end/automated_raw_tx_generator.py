@@ -52,9 +52,10 @@ def receiver_address_list(block_number, receiver_address_lst_data):
 
 
 def initial_tx_generator(number_of_addresses, amount):
-    sender_info = initial_sender_info_generator()[0]
-    sender_public_key = initial_sender_info_generator()[1]
-    sender_private_key = initial_sender_info_generator()[2]
+    initial_sender_info = initial_sender_info_generator()
+    sender_info = initial_sender_info[0]
+    sender_public_key = initial_sender_info[1]
+    sender_private_key = initial_sender_info[2]
     receiver_address_lst_data = []
     i_receiver_info_generator_data = receiver_info_generator(receiver_address_lst_data, number_of_addresses, amount)
     receiver_info = i_receiver_info_generator_data[0]
@@ -84,7 +85,7 @@ def multiple_tx_generator(block_number, number_of_receiver_addresses_per_tx, amo
     # print("multiple receiver_address_list: ", m_receiver_address_lst_data)
 
 
-# initial_tx_generator(number_of_addresses=21, amount=100000)
+initial_tx_generator(number_of_addresses=21, amount=100000)
 # multiple_tx_generator(block_number=1, number_of_receiver_addresses_per_tx=1000, amount=100)
 
 
