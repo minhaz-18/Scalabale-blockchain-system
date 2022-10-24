@@ -39,12 +39,11 @@ node_1.start()
 
 time.sleep(1)
 
-#node_1.connect_with_node('103.149.142.66', 8001) ## Baten's PC ##
 # node_1.connect_with_node('104.28.208.86', 8080) ## Sohan's public PC ##
 # node_1.connect_with_node('192.168.0.102', 8080) ## Sohan's local PC ##
-node_1.connect_with_node('192.168.0.105', 8001) ## Opu's Local PC ##
-node_1.connect_with_node('192.168.0.217', 8001) ## Minhaz's Local PC ##
-#node_1.connect_with_node('202.65.175.47', 8080) ## Opu's Public PC ##
+# node_1.connect_with_node('192.168.0.105', 8001) ## Opu's Local PC ##
+# node_1.connect_with_node('192.168.0.217', 8001) ## Minhaz's Local PC ##
+node_1.connect_with_node('202.65.175.47', 8080) ## Opu's Public PC ##
 #node_1.connect_with_node('144.48.162.18', 8080) ## Minhaz's Public PC ##
 
 #node_1.connect_with_node('127.0.0.1', 8002)
