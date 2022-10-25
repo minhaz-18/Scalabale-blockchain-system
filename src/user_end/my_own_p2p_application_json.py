@@ -84,6 +84,7 @@ if len(block_ls) != 0:
     for each_block_for_del in block_ls:
         block_name_for_del = os.path.join(block_file_dir, each_block_for_del)
         os.remove(block_name_for_del)
+    print("All blocks are deleted")
 # --------------------------------------------------------------------------------------------------------------------
 # For sending transaction ------------------------------------------------------------------------------
 tx_file_dir = output_tx_cid()
@@ -98,6 +99,7 @@ if len(tx_ls) != 0:
     for file_num_for_del in tx_ls:
         file_name_for_del = os.path.join(tx_file_dir, file_num_for_del)
         os.remove(file_name_for_del)
+    print("All transactions are deleted")
 
 # ------------------------------------------------------------------------------------------------------
 
