@@ -19,7 +19,7 @@ def raw_block(data):
     # PREVIOUS BLOCK NUMBER AND PREVIOUS HASH NUMBER EXTRACT
     hash_block_dir = output_hash_block()
     hash_block_dir_lst = os.listdir(hash_block_dir)
-    print(hash_block_dir_lst)
+    # print(hash_block_dir_lst)
     if len(hash_block_dir_lst) != 0:
         hash_block_dir_lst.sort()
         last_hash_block_name = os.path.join(hash_block_dir, hash_block_dir_lst[-1])
@@ -36,7 +36,8 @@ def raw_block(data):
         last_hash_block_index = 0
         index = last_hash_block_index + 1
     # RAW BLOCK FORMAT
-    timestamp = time.time()
+    timestamp = int(time.time())
+    print("timestamp: ", timestamp)
     nonce = 0
     block = {"Index": index,
              "Nonce": nonce,
@@ -47,10 +48,10 @@ def raw_block(data):
     # GENERATE RAW BLOCK
     json_format = json.dumps(block, sort_keys=True).encode()   # json format
     hash_of_block = hashlib.sha256(json_format).hexdigest()    # generating hash
-    print(hash_of_block)
+    print("Initial calculated hash: ", hash_of_block)
     while hash_of_block[:4] != "0000":        # checking is the block valid or not
         nonce += 1
-        timestamp = time.time()
+        timestamp = int(time.time())
         block = {"Index": index,
                  "Nonce": nonce,
                  "Timestamp": timestamp,
@@ -59,6 +60,7 @@ def raw_block(data):
                  }       # incrementing nonce for validation purpose
         json_format = json.dumps(block, sort_keys=True).encode()  # again creating json format after updating block nonce
         hash_of_block = hashlib.sha256(json_format).hexdigest()  # again generating hash with updated block
+        print("Calculated hash: ", hash_of_block)
     a = {"Block Hash": hash_of_block}
     block.update(a)
     print(block)
@@ -97,4 +99,11 @@ def raw_block_main(num):
         raw_block(tx)
 
 
-# raw_block_main(1)
+starting_time = time.time()
+raw_block_main(21)
+finishing_time = time.time()
+dif = finishing_time - starting_time
+print("starting_time: ", time.ctime(starting_time))
+print("finishing_time: ", time.ctime(finishing_time))
+print("required time in sec: ", dif)
+print("required time: ", time.ctime(dif))

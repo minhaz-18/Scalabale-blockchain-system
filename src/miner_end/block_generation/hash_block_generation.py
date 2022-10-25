@@ -17,6 +17,7 @@ def hash_block_generation():
     raw_block_cid_dir_lst = os.listdir(raw_block_cid_dir)
     raw_block_cid_paths = [os.path.join(raw_block_cid_dir, basename) for basename in raw_block_cid_dir_lst]
     last_raw_block_cid_name = max(raw_block_cid_paths, key=os.path.getctime)
+    print("last_raw_block_cid_name: ", last_raw_block_cid_name)
 
     # read the last file from the block_cid_generation folder and get index, cid
     with open(last_raw_block_cid_name, 'r') as file:
@@ -43,7 +44,7 @@ def hash_block_generation():
         previous_hash = ultimate_block_info["Block Hash"]
     else:
         previous_hash = "0000000000000000000000000000000000000000000000000000000000000000"
-    timestamp = time.time()
+    timestamp = int(time.time())
     nonce = 0
     block = {"Index": h_index,
              "Nonce": nonce,
@@ -56,7 +57,7 @@ def hash_block_generation():
     hash_of_block = hashlib.sha256(json_format).hexdigest()    # generating hash
     while hash_of_block[:2] != "00":        # checking if the block valid or not
         nonce += 1
-        timestamp = time.time()
+        timestamp = int(time.time())
         block = {"Index": h_index,
                  "Nonce": nonce,
                  "Timestamp": timestamp,
@@ -86,8 +87,8 @@ def hash_block_generation():
 
 
 def trasfer_mempool_data_after_hash_block_generation():
-    mempool_dir = verified_tx_mempool
-    mempool_dir_lst = os.listdir()
+    mempool_dir = verified_tx_mempool()
+    mempool_dir_lst = os.listdir(mempool_dir)
     used_mempool_dir = verified_tx_used_mempool()
     for item in mempool_dir_lst:
         mempool_file = os.path.join(mempool_dir, item)
@@ -97,9 +98,18 @@ def trasfer_mempool_data_after_hash_block_generation():
         with open(used_mempool_file, "w") as file:
             mempool_tx = json.dumps(mempool_file_data, indent=2)
             file.write(mempool_tx)
-        os.remove(mempool_file)
+    for item_delete in mempool_dir_lst:
+        mempool_file_delete = os.path.join(mempool_dir, item_delete)
+        os.remove(mempool_file_delete)
     print("mempool and used_mempool folder is updated")
 
 
-# hash_block_generation()
-# trasfer_mempool_data_after_hash_block_generation()
+starting_time = time.time()
+hash_block_generation()
+finishing_time = time.time()
+dif = finishing_time - starting_time
+print("starting_time: ", time.ctime(starting_time))
+print("finishing_time: ", time.ctime(finishing_time))
+print("required time in sec: ", dif)
+print("required time: ", time.ctime(dif))
+trasfer_mempool_data_after_hash_block_generation()

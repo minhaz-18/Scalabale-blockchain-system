@@ -1,13 +1,10 @@
 import os
 import json
-import subprocess
 import sys
 from pycoin.ecdsa import generator_secp256k1, verify
 import hashlib
 from ast import literal_eval  # 0.80 version required
 import subprocess
-import time
-from pathlib import Path
 
 tx_verification_code_dir = os.getcwd()
 print(f"tx verification code directory: {tx_verification_code_dir}")
@@ -136,7 +133,7 @@ def double_spending_check(count, sender_address_lst):
         content = file.read()
         unfrozen = json.loads(content)
     receiver_list = unfrozen
-    print("receiver_list first: ", receiver_list)
+    # print("receiver_list first: ", receiver_list)
     length_of_receiver_list = len(receiver_list)
     if length_of_receiver_list == 0:
         print("Receiver list is empty")
@@ -210,50 +207,50 @@ def tx_verification_main():
         if double_spending_test == 3:
             print(f"The {each_raw_tx} has passed all tests")
             # receiver addresses add to the unused_address_list
-            print("RECEIVER_ADDRESS_LIST : ", receiver_address_lst)
+            # print("RECEIVER_ADDRESS_LIST : ", receiver_address_lst)
             for a_r_l_each_item in receiver_address_lst:
-                print("a_r_l_each_item: ", a_r_l_each_item)
+                # print("a_r_l_each_item: ", a_r_l_each_item)
                 for a_r_l, amount in a_r_l_each_item.items():
                     receiver_address = a_r_l
-                    print("receiver_address: ", receiver_address)
+                    # print("receiver_address: ", receiver_address)
                     receiver_address_list_dir = output_receiver_address_list()
                     receiver_address_list_text_name = os.path.join(receiver_address_list_dir, "unused_addresses.txt")
                     with open(receiver_address_list_text_name, "r") as file:
                         content = file.read()
                         unfrozen = json.loads(content)
                     unfrozen.append(receiver_address)
-                    print("unfrozen: ", unfrozen)
+                    # print("unfrozen: ", unfrozen)
                     with open(receiver_address_list_text_name, "w") as file:
                         frozen = json.dumps(unfrozen)
                         file.write(frozen)
 
-            # # WRITING MEMOOL DATA
-            # each_tx_cid_ab_dir = os.path.join(used_tx_cid_dir, each_raw_tx)
-            # with open(each_tx_cid_ab_dir, "r") as file:
-            #     data_for_mempool = json.loads(file.read())
-            # mempool_dir = verified_tx_mempool()
-            # each_tx_cid_ab_dir_for_mempool = os.path.join(mempool_dir, each_raw_tx)
-            # with open(each_tx_cid_ab_dir_for_mempool, "w") as file:
-            #     file.write(json.dumps(data_for_mempool, indent=2))
-            # print(f"{each_raw_tx} is verified and writen in mempool")
+            # WRITING MEMOOL DATA
+            each_tx_cid_ab_dir = os.path.join(used_tx_cid_dir, each_raw_tx)
+            with open(each_tx_cid_ab_dir, "r") as file:
+                data_for_mempool = json.loads(file.read())
+            mempool_dir = verified_tx_mempool()
+            each_tx_cid_ab_dir_for_mempool = os.path.join(mempool_dir, each_raw_tx)
+            with open(each_tx_cid_ab_dir_for_mempool, "w") as file:
+                file.write(json.dumps(data_for_mempool, indent=2))
+            print(f"{each_raw_tx} is verified and writen in mempool")
 
             # REMOVE FROM P2P/USED_RECEIVING_TX_CID AND ADDING TO verified_tx/used_raw_tx_fetched_from_ipfs
-            # used_verified_raw_tx_dir = verified_tx_used_raw_tx_fetched_from_ipfs()
-            # each_raw_tx_ab_dir_for_delete = os.path.join(used_verified_raw_tx_dir, each_raw_tx)
-            # with open(each_raw_tx_ab_dir_for_delete, "w") as file:
-            #     file.write(json.dumps(data_for_verification, indent=2))
-            # print(f"{each_raw_tx} is added in verified_tx/used_raw_tx_fetched_from_ipfs")
+            used_verified_raw_tx_dir = verified_tx_used_raw_tx_fetched_from_ipfs()
+            each_raw_tx_ab_dir_for_delete = os.path.join(used_verified_raw_tx_dir, each_raw_tx)
+            with open(each_raw_tx_ab_dir_for_delete, "w") as file:
+                file.write(json.dumps(data_for_verification, indent=2))
+            print(f"{each_raw_tx} is added in verified_tx/used_raw_tx_fetched_from_ipfs")
 
         else:
             print(f"The {each_raw_tx} has passed {double_spending_test} tests and is REJECTED")
 
         # REMOVE FROM P2P/USED_RECEIVING_TX_CID
-        # each_tx_cid_ab_dir = os.path.join(used_tx_cid_dir, each_raw_tx)
-        # os.remove(each_tx_cid_ab_dir)
-        # print(f"{each_raw_tx} is deleted from p2p/used_receiving_tx_cid")
-        #
-        # os.remove(each_raw_tx_ab_dir)
-        # print(f"{each_raw_tx} is deleted from ipfs/raw_tx_fetching")
+        os.remove(each_raw_tx_ab_dir)
+        print(f"{each_raw_tx} is deleted from ipfs/raw_tx_fetching")
+        each_tx_cid_ab_dir = os.path.join(used_tx_cid_dir, each_raw_tx)
+        os.remove(each_tx_cid_ab_dir)
+        print(f"{each_raw_tx} is deleted from p2p/used_receiving_tx_cid")
+
 
 
 tx_verification_main()
