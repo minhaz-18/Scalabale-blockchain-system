@@ -6,6 +6,13 @@
 # implementation. See the MyOwnPeer2PeerNode.py for all the details. In that class all your own application specific  #
 # details are coded.                                                                                                  #
 #######################################################################################################################
+'''
+node = this device's local ip and port number
+node.connect = the connected device's public ip and port number
+The ports should be port forwarded
+firewall should be disabled
+sender's port number and receiver's port number's should match
+'''
 
 import sys
 import time
@@ -19,17 +26,17 @@ print(f"p2p sending code directory: {p2p_sending_code_dir}")
 os.chdir("..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
-from folder_structure import p2p_sending_tx_cid, p2p_sending_block_cid, src_user_end
+from folder_structure import p2p_sending_tx_cid, p2p_sending_block_cid, src_user_end, output_tx_cid, p2p_sending_block_cid
 os.chdir(src_user_end())
 print("p2p_sending_tx_cid: ", p2p_sending_tx_cid())
 print("p2p_sending_block_cid: ", p2p_sending_block_cid())
 
-node_1 = MyOwnPeer2PeerNode("192.168.0.209", 8001) ## Minhaz's Pc Local IP ##
+# node_1 = MyOwnPeer2PeerNode("192.168.0.209", 8001) ## Minhaz's Pc Local IP ##
 # node_1 = MyOwnPeer2PeerNode("192.168.0.1", 8001) ## Minhaz's Pc Local gateway ##
-# node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## Minhaz's pubic IP ##
-# node_1 = MyOwnPeer2PeerNode("192.168.0.209", 8001) ## Minhaz's laptop Local IP ##
-# node_1 = MyOwnPeer2PeerNode("192.168.0.1", 8001) ## Minhaz's laptop Local gateway ##
-# node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## Minhaz's laptop IP ##
+# node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## Minhaz's pc pubic IP ##
+node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8082) ## Minhaz's laptop Local IP ##
+# node_1 = MyOwnPeer2PeerNode("192.168.0.1", 8002) ## Minhaz's laptop Local gateway ##
+# node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## Minhaz's laptop public IP ##
 # node_1 = MyOwnPeer2PeerNode("192.168.0.105", 8001) ## Opu's Local IP ##
 # node_1 = MyOwnPeer2PeerNode("202.65.175.47", 8001) ## Opu's pubic IP ##
 #node_2 = MyOwnPeer2PeerNode("0.0.0.0", 8080)
@@ -46,11 +53,13 @@ time.sleep(1)
 # node_1.connect_with_node('104.28.208.86', 8080) ## Sohan's public PC ##
 # node_1.connect_with_node('192.168.0.102', 8080) ## Sohan's local PC ##
 # node_1.connect_with_node('192.168.0.105', 8001) ## Opu's Local PC ##
-node_1.connect_with_node('202.65.175.47', 8080) ## Opu's Public PC ##
-# node_1.connect_with_node('192.168.0.217', 8001) ## Minhaz's PC Local ip ##
-#node_1.connect_with_node('144.48.162.18', 8080) ## Minhaz's PC Public ip ##
+# node_1.connect_with_node('202.65.175.47', 8080) ## Opu's Public PC ##
+# node_1.connect_with_node('192.168.0.209', 8003) ## Minhaz's PC Local ip ##
+# node_1.connect_with_node('192.168.0.1', 8001) ## Minhaz's PC gateway ip ##
+# node_1.connect_with_node('144.48.162.18', 8002) ## Minhaz's PC Public ip ##
 # node_1.connect_with_node('192.168.0.217', 8001) ## Minhaz's laptop Local ip ##
-#node_1.connect_with_node('144.48.162.18', 8080) ## Minhaz's laptop Public ip ##
+node_1.connect_with_node('144.48.162.18', 8081) ## Minhaz's laptop Public ip ##
+# node_1.connect_with_node('192.168.0.1', 8002) ## Minhaz's laptop gateway ip ##
 
 #node_1.connect_with_node('127.0.0.1', 8002)
 #node_2.connect_with_node('127.0.0.1', 8003)
@@ -62,8 +71,19 @@ print("Sending at: " + str(time.time()))
 #node_1.send_to_nodes({"name": "Maurice", "number": 20})
 
 
+# while True:
+# For sending blocks -------------------------------------------------------------------------------------------------
+block_file_dir = p2p_sending_block_cid()  # this directory is only for sending files not the ultimate block directory
+block_ls = os.listdir(block_file_dir)
+if len(block_ls) != 0:
+    block_file_name = os.path.join(block_file_dir, block_ls[0])
+    with open(block_file_name) as file:
+        data = json.load(file)
+        node_1.send_to_nodes(data)
+        # os.remove(block_file_name)
+
 # For sending transaction ------------------------------------------------------------------------------
-tx_file_dir = p2p_sending_tx_cid()
+tx_file_dir = output_tx_cid()
 ls = os.listdir(tx_file_dir)
 #print(ls)
 for file_num in ls:
@@ -75,20 +95,12 @@ for file_num in ls:
 
 # ------------------------------------------------------------------------------------------------------
 
-'''
-# For sending blocks -------------------------------------------------------------------------------------------------
-block_file_dir = p2p_sending_block_cid()  #this directory is only for sending files not the ultimate block directory
-block_ls = os.listdir(block_file_dir)
-while True:
-    if len(block_ls) != 0:
-        block_file_name = os.path.join(block_file_dir, block_ls[0])
-        with open(block_file_name) as file:
-            data = json.load(file)
-            node_1.send_to_nodes(data)
-            os.remove(block_file_name)
+
+
+
 # --------------------------------------------------------------------------------------------------------------------
 
-'''
+
 
 
 #time.sleep(5)
