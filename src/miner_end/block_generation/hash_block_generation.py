@@ -8,7 +8,7 @@ print(f"hash block generation code directory: {hash_block_generation_code_dir}")
 os.chdir("../..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
-from folder_structure import output_hash_block, output_raw_block_cid, p2p_sending_block_cid
+from folder_structure import output_hash_block, output_raw_block_cid, p2p_sending_block_cid, verified_tx_mempool, verified_tx_used_mempool
 print("hash block generation code directory after folder structure: ", os.getcwd())
 
 
@@ -85,4 +85,21 @@ def hash_block_generation():
     return block
 
 
-hash_block_generation()
+def trasfer_mempool_data_after_hash_block_generation():
+    mempool_dir = verified_tx_mempool
+    mempool_dir_lst = os.listdir()
+    used_mempool_dir = verified_tx_used_mempool()
+    for item in mempool_dir_lst:
+        mempool_file = os.path.join(mempool_dir, item)
+        with open(mempool_file, "r") as file:
+            mempool_file_data = json.loads(file.read())
+        used_mempool_file = os.path.join(used_mempool_dir, item)
+        with open(used_mempool_file, "w") as file:
+            mempool_tx = json.dumps(mempool_file_data, indent=2)
+            file.write(mempool_tx)
+        os.remove(mempool_file)
+    print("mempool and used_mempool folder is updated")
+
+
+# hash_block_generation()
+# trasfer_mempool_data_after_hash_block_generation()

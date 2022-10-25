@@ -1,6 +1,6 @@
 from pathlib import Path
 import os
-
+import json
 # Current directory: E:\Extra\Minhaz\Projects\Scalabale-blockchain-system\src
 # Starting of this code, the location should be in src directory
 # Otherwise the code will throw error or the structure of the folders will be disrupted
@@ -258,7 +258,17 @@ def output_hash_block():
 # project/output/miner_end/receiver_address_list
 def output_receiver_address_list():
     output_receiver_address_list_dir = Path(project()) / "output" / "miner_end" / "receiver_address_list"
-    return create_folder(output_receiver_address_list_dir)
+    create_folder(output_receiver_address_list_dir)
+    output_receiver_address_list_dir_lst = os.listdir(output_receiver_address_list_dir)
+    print("output_receiver_address_list_dir_lst: ", output_receiver_address_list_dir_lst)
+    receiver_address_list_txt_file_name = Path(output_receiver_address_list_dir) / "unused_addresses.txt"
+    if "unused_addresses.txt" in output_receiver_address_list_dir_lst:
+        pass
+    else:
+        unused_addresses = []
+        with open(receiver_address_list_txt_file_name, "w") as ad_file:
+            ad_file.write(json.dumps(unused_addresses, indent=2))
+    return output_receiver_address_list_dir
 
 
 def main():
