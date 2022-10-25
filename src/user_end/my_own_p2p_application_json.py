@@ -10,7 +10,7 @@
 node = this device's local ip and port number
 node.connect = the connected device's public ip and port number
 The ports should be port forwarded
-firewall should be disabled
+firewall should be disabled or maybe not
 sender's port number and receiver's port number's should match
 '''
 
