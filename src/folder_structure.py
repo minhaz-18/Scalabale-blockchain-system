@@ -1,11 +1,11 @@
 from pathlib import Path
 import os
-
+import json
 # Current directory: E:\Extra\Minhaz\Projects\Scalabale-blockchain-system\src
 # Starting of this code, the location should be in src directory
 # Otherwise the code will throw error or the structure of the folders will be disrupted
 current_dir = Path.cwd()
-print(f"Current directory: {current_dir}")
+# print(f"Current directory: {current_dir}")
 
 
 def src():
@@ -129,9 +129,9 @@ def output_p2p():
     return create_folder(output_p2p_dir)
 
 
-# project/output/miner_end/p2p/receiving_block_cid
+# project/output/miner_end/p2p/receiving_hash_block
 def p2p_receiving_block_cid():
-    p2p_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "receiving_block_cid"
+    p2p_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "receiving_hash_block"
     return create_folder(p2p_receiving_block_cid_dir)
 
 
@@ -147,10 +147,34 @@ def p2p_sending_tx_cid():
     return create_folder(p2p_sending_tx_cid_dir)
 
 
-# project/output/miner_end/p2p/sending_block_cid
+# project/output/miner_end/p2p/sending_hash_block
 def p2p_sending_block_cid():
-    p2p_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "sending_block_cid"
+    p2p_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "sending_hash_block"
     return create_folder(p2p_sending_block_cid_dir)
+
+
+# project/output/miner_end/p2p/used_receiving_block_cid
+def p2p_used_receiving_block_cid():
+    p2p_used_receiving_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_receiving_block_cid"
+    return create_folder(p2p_used_receiving_block_cid_dir)
+
+
+# project/output/miner_end/p2p/used_receiving_tx_cid
+def p2p_used_receiving_tx_cid():
+    p2p_used_receiving_tx_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_receiving_tx_cid"
+    return create_folder(p2p_used_receiving_tx_cid_dir)
+
+
+# project/output/miner_end/p2p/used_sending_tx_cid
+def p2p_used_sending_tx_cid():
+    p2p_used_sending_tx_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_sending_tx_cid"
+    return create_folder(p2p_used_sending_tx_cid_dir)
+
+
+# project/output/miner_end/p2p/used_sending_block_cid
+def p2p_used_sending_block_cid():
+    p2p_used_sending_block_cid_dir = Path(project()) / "output" / "miner_end" / "p2p" / "used_sending_block_cid"
+    return create_folder(p2p_used_sending_block_cid_dir)
 
 
 # project/output/miner_end/ipfs
@@ -213,6 +237,12 @@ def output_raw_block():
     return create_folder(output_raw_block_dir)
 
 
+# project/output/miner_end/raw_block_for_ipfs_use
+def output_raw_block_for_ipfs_use():
+    output_raw_block_for_ipfs_use_dir = Path(project()) / "output" / "miner_end" / "raw_block_for_ipfs_use"
+    return create_folder(output_raw_block_for_ipfs_use_dir)
+
+
 # project/output/miner_end/raw_block_cid
 def output_raw_block_cid():
     output_raw_block_cid_dir = Path(project()) / "output" / "miner_end" / "raw_block_cid"
@@ -228,7 +258,17 @@ def output_hash_block():
 # project/output/miner_end/receiver_address_list
 def output_receiver_address_list():
     output_receiver_address_list_dir = Path(project()) / "output" / "miner_end" / "receiver_address_list"
-    return create_folder(output_receiver_address_list_dir)
+    create_folder(output_receiver_address_list_dir)
+    output_receiver_address_list_dir_lst = os.listdir(output_receiver_address_list_dir)
+    print("output_receiver_address_list_dir_lst: ", output_receiver_address_list_dir_lst)
+    receiver_address_list_txt_file_name = Path(output_receiver_address_list_dir) / "unused_addresses.txt"
+    if "unused_addresses.txt" in output_receiver_address_list_dir_lst:
+        pass
+    else:
+        unused_addresses = []
+        with open(receiver_address_list_txt_file_name, "w") as ad_file:
+            ad_file.write(json.dumps(unused_addresses, indent=2))
+    return output_receiver_address_list_dir
 
 
 def main():

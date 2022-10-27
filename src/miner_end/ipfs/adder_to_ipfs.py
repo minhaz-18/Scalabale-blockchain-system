@@ -3,6 +3,7 @@ import json
 import subprocess
 import sys
 from pathlib import Path
+import time
 ipfs_adder_code_dir = os.getcwd()
 print(f"This codes directory: {ipfs_adder_code_dir}")
 os.chdir("..")
@@ -11,7 +12,7 @@ sys.path.insert(1, src_dir)  # for importing folder_structure.py
 from folder_structure import output_tx, output_tx_cid, output_used_tx
 
 
-def adder(raw_tx_ab_file_name, cid_folder):
+def tx_adder(raw_tx_ab_file_name, cid_folder):
     with open(raw_tx_ab_file_name, "r") as file:
         content = file.read()
         unfrozen = json.loads(content)
@@ -53,7 +54,7 @@ def ipfs_add_main():
     for each_tx in raw_tx_dir_lst:
         raw_tx_file_name = each_tx
         raw_tx_ab_file_name = os.path.join(raw_tx_dir, raw_tx_file_name)
-        adder(raw_tx_ab_file_name= raw_tx_ab_file_name, cid_folder= tx_cid_dir)
+        tx_adder(raw_tx_ab_file_name= raw_tx_ab_file_name, cid_folder= tx_cid_dir)
         print(f"{raw_tx_file_name} is uploaded and cid is written")
         delete_files(file_name=each_tx, delete_file_dir=raw_tx_dir, transafer_dir=output_used_tx())
     print("All tx is uploaded to ipfs and cid is written")

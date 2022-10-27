@@ -1,4 +1,3 @@
-
 from pycoin.ecdsa import generator_secp256k1, sign
 import hashlib
 import json
@@ -75,6 +74,11 @@ def write_tx(user_tx):
         print('[TRANSACTION WRITTEN]')
 
 
+# # format
+# receiverd_list = {"sender_address": "aksldj", "sadl": 12}
+# sender_address = receiverd_list["sender_address"]
+# sender_info = [[sender_address, block_number]]
+# receiver_info = [{receiver_address: amount}]
 def main(sender_info, receiver_info, sender_public_key, sender_private_key):
     # sender_address = "7195c17a19d70ce2e4ef28aac7016e60d30c948017d1261bd87bef48c6643465"
     # block_number = 3
@@ -86,6 +90,7 @@ def main(sender_info, receiver_info, sender_public_key, sender_private_key):
     # receiver_info = [{receiver_address: amount}]
     tx_data = raw_tx_generator(sender_info, receiver_info, sender_public_key, sender_private_key)
     write_tx(tx_data)
+    return tx_data
 
 
 # main()

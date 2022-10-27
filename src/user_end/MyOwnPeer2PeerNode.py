@@ -55,6 +55,8 @@ class MyOwnPeer2PeerNode(Node):
     '''
 
     def node_message(self, node, data):
+        print("Message Received")
+        print("Message Writing Initiating")
 
         # with open("sample" + str(random.randint(0,100)) + ".json", "w") as outfile:
         #    json.dump(data, outfile)
@@ -64,21 +66,22 @@ class MyOwnPeer2PeerNode(Node):
         if "Index" not in key_list:
             print("It's a transaction")
             json_dir = p2p_receiving_tx_cid()
-            name = "sample_tx" + str(MyOwnPeer2PeerNode.counter) + ".json"
+            cid = data["CID"]
+            name = cid + ".json"
             t_fileName = os.path.join(json_dir, name)
 
             with open(t_fileName, "w") as outfile:
-                json.dump(data, outfile)
+                outfile.write(json.dumps(data, indent=2))
                 MyOwnPeer2PeerNode.counter = MyOwnPeer2PeerNode.counter + 1
         else:
             print("It's a block")
             block_dir = p2p_receiving_block_cid()
             block_num = data["Index"]
-            block_name = "sample_block" + str(block_num) + ".json"
+            block_name = str(block_num) + ".json"
             b_fileName = os.path.join(block_dir, block_name)
 
             with open(b_fileName, "w") as outfile:
-                json.dump(data, outfile)
+                outfile.write(json.dumps(data, indent=2))
                 MyOwnPeer2PeerNode.counter = MyOwnPeer2PeerNode.counter + 1
         # --------------------------------------------------------------------------------------------------------------
 
