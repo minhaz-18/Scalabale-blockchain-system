@@ -31,7 +31,13 @@ os.chdir(src_user_end())
 print("p2p_sending_tx_cid: ", p2p_sending_tx_cid())
 print("p2p_sending_block_cid: ", p2p_sending_block_cid())
 
-node_1 = MyOwnPeer2PeerNode("192.168.0.209", 8081) ## Minhaz's Pc Local IP ##
+my_machine_loacl_ip = "192.168.0.209"
+my_forwarded_port = 8081
+connected_machine_1_public_ip = "144.48.162.18"
+connected_machine_1_forwarde_port = 8082
+connected_machine_2_public_ip = "144.48.162.18"
+connected_machine_2_forwarde_port = 8082
+node_1 = MyOwnPeer2PeerNode(my_machine_loacl_ip, my_forwarded_port) ## Minhaz's Pc Local IP ##
 # node_1 = MyOwnPeer2PeerNode("192.168.0.1", 8001) ## Minhaz's Pc Local gateway ##
 # node_1 = MyOwnPeer2PeerNode("144.48.162.18", 8001) ## Minhaz's pc pubic IP ##
 # node_1 = MyOwnPeer2PeerNode("192.168.0.217", 8082) ## Minhaz's laptop Local IP ##
@@ -58,7 +64,8 @@ time.sleep(1)
 # node_1.connect_with_node('192.168.0.1', 8001) ## Minhaz's PC gateway ip ##
 # node_1.connect_with_node('144.48.162.18', 8002) ## Minhaz's PC Public ip ##
 # node_1.connect_with_node('192.168.0.217', 8001) ## Minhaz's laptop Local ip ##
-node_1.connect_with_node('144.48.162.18', 8082) ## Minhaz's laptop Public ip ##
+node_1.connect_with_node(connected_machine_1_public_ip, connected_machine_1_forwarde_port) ## Minhaz's laptop Public ip ##
+node_1.connect_with_node(connected_machine_2_public_ip, connected_machine_2_forwarde_port) ## Minhaz's laptop Public ip ##
 # node_1.connect_with_node('192.168.0.1', 8002) ## Minhaz's laptop gateway ip ##
 
 #node_1.connect_with_node('127.0.0.1', 8002)
