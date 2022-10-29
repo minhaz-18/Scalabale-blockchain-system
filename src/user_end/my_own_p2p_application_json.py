@@ -31,10 +31,10 @@ os.chdir(src_user_end())
 print("p2p_sending_tx_cid: ", p2p_sending_tx_cid())
 print("p2p_sending_block_cid: ", p2p_sending_block_cid())
 
-my_machine_loacl_ip = "192.168.0.209"
-my_forwarded_port = 8081
+my_machine_loacl_ip = "192.168.0.106"
+my_forwarded_port = 8083
 connected_machine_1_public_ip = "144.48.162.18"
-connected_machine_1_forwarde_port = 8082
+connected_machine_1_forwarde_port = 8081
 connected_machine_2_public_ip = "144.48.162.18"
 connected_machine_2_forwarde_port = 8082
 node_1 = MyOwnPeer2PeerNode(my_machine_loacl_ip, my_forwarded_port) ## Minhaz's Pc Local IP ##
