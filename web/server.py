@@ -27,8 +27,6 @@ def index():
 
 @app.route('/my-link/')
 def my_link():
-    # print ('I got clicked!')
-    # my_function()
     key_pairs = key_pairs_generation()
     addresses = address_generation()
     addresses1 = json.loads(addresses)
@@ -41,6 +39,26 @@ def my_link1():
 @app.route('/tx-generation/')
 def my_link2():
     return render_template('tx-generation.html')
+@app.route('/confirmation-page/', methods =["GET", "POST"])
+def gfg():
+    if request.method == "POST":
+       # getting input with name = fname in HTML form
+       sender_address = request.form.get("sender_address")
+       receiver_address = request.form.get("receiver_address")
+       amount = request.form.get("amount")
+       block_number = request.form.get("block_number")
+       sender_public_key = request.form.get("sender_public_key")
+       sender_private_key = request.form.get("sender_private_key")
+       values = {
+           "sender_address": sender_address,
+           "receiver_address": receiver_address,
+           "amount": amount,
+           "block_number": block_number,
+           "sender_public_key": sender_public_key,
+           "sender_private_key": sender_private_key,
+       }
+       return json.dumps(values)
+    return render_template("confirmation.html")
 
 
 if __name__ == '__main__':
