@@ -15,6 +15,8 @@ sys.path.insert(1, user_end_dir)
 # print("nwsdsa", key_pair_relative)
 # sys.path.append(key_pair_relative)
 from key_pairs_address_generation import *
+os.chdir(server_code_dir)
+
 
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
