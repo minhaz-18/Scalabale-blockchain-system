@@ -1,6 +1,15 @@
 # Scalabale blockchain system
 
-Simple overview of use/purpose.
+For many years, numerous cryptocurrencies have been supported by the 
+innovative technology known as blockchain. This decentralized system, 
+despite having many unique characteristics, falls behind centralized 
+currency systems in terms of scalability and cannot be adopted by other 
+platforms. Increasing throughput and reducing the dependence on huge storage 
+are the goals of this project. The storing obligations are avoided, and 
+throughput is increased by using the distributed storage system named IPFS. 
+By inserting references to the main block into the ledger in place of the 
+original block, the dual blockchain approach serves the fundamental 
+characteristics of the blockchain.
 
 ## Description
 
