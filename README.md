@@ -5,15 +5,13 @@ innovative technology known as blockchain. This decentralized system,
 despite having many unique characteristics, falls behind centralized 
 currency systems in terms of scalability and cannot be adopted by other 
 platforms. Increasing throughput and reducing the dependence on huge storage 
-are the goals of this project. The storing obligations are avoided, and 
-throughput is increased by using the distributed storage system named IPFS. 
-By inserting references to the main block into the ledger in place of the 
-original block, the dual blockchain approach serves the fundamental 
-characteristics of the blockchain.
-
+are the goals of this project.
 ## Description
 
 An in-depth paragraph about your project and overview of use.
+![system overview](images/system_overview.PNG)
+
+Transaction verification
 
 ## Getting Started
 
@@ -50,13 +48,23 @@ An in-depth paragraph about your project and overview of use.
 ### Installing
 
 * How/where to download your program
-* Any modifications needed to be made to files/folders
+* Either fork or download the project 
+* It is recommended to open this project in pycharm
+* Install all the dependencies
 * install ipfs
 * run ipfs daemon in cmd
 * forward a port in router
 * put your local ip and port number that you forwarded in my_own_p2p_application_json.py
 
 ### Executing program
+There are two parts of this program. One is the user end where a user generates 
+a transaction and sends it to the validators. And the other part is the miner
+end where the miner validates the transaction that the user sent and adds this 
+transaction to the blockchain after validation.
+* For both ends at first run the server.py to start the web server.
+* A web interface will be hosted at http://localhost:5000
+* Go to http://localhost:5000 in your browser (preferably Google Chrome) and use the web interface according to the need.
+
 
 [comment]: <> (* How to run the program)
 
@@ -67,18 +75,39 @@ An in-depth paragraph about your project and overview of use.
 [comment]: <> (code blocks for commands)
 
 [comment]: <> (```)
-* #### User End
+#### User End
   * How to run the program
+  * By going to http://localhost:5000 address in the browser a home page will be found
+  * Click the user end button to go to the user end page
+  * Click the button in the user end page to generate a new public-private key pair and an address.
+  * Store these information locally.
+  * Share the newly generated address with the sender that will make the transaction.
+  * The sender will then click the button in "" to go to the transaction generation page.
+  * In transaction generation page the sender will fill up a form with corresponding data and click the button to genrate a transaction.
+  * In the next page the sender/ user will review the transaction and press the button "send" to send the transaction to the miners.
   * Step-by-step bullets
-  ```
-  code blocks for commands
-    ```
-* #### Miner End
+
+[comment]: <> (  ```)
+
+[comment]: <> (  code blocks for commands)
+
+[comment]: <> (    ```)
+#### Miner End
   * How to run the program
-  * Step-by-step bullets
-    ```
-    code blocks for commands
-    ```
+  * By going to http://localhost:5000 address in the browser a home page will be found.
+  * In the miner end page there is a button to start the mining process
+  * After clicking the button the system will start to verify transactions and generate raw block and hash block.
+  * And will add these blocks to the corresponding blockchains and will broadcast the hash block among other miners.
+
+[comment]: <> (  * )
+
+[comment]: <> (  * Step-by-step bullets)
+
+[comment]: <> (    ```)
+
+[comment]: <> (    code blocks for commands)
+
+[comment]: <> (    ```)
 ## Help
 
 Any advise for common problems or issues.
