@@ -79,7 +79,7 @@ def write_tx(user_tx):
 # sender_address = receiverd_list["sender_address"]
 # sender_info = [[sender_address, block_number]]
 # receiver_info = [{receiver_address: amount}]
-def main(sender_info, receiver_info, sender_public_key, sender_private_key):
+def raw_tx_main(sender_info, receiver_info, sender_public_key, sender_private_key):
     # sender_address = "7195c17a19d70ce2e4ef28aac7016e60d30c948017d1261bd87bef48c6643465"
     # block_number = 3
     # receiver_address = "7195c17a19d70ce2e4ef28aac7016e60d30c948017d1261bd87bef48c6643465"

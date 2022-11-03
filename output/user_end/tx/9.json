@@ -1,0 +1,17 @@
+{
+  "message": {
+    "SenderAddress": [
+      [
+        "asd",
+        "2332"
+      ]
+    ],
+    "ReceiverAddress": [
+      {
+        "sda": "23"
+      }
+    ],
+    "PublicKey": "23132"
+  },
+  "signature": "0xd82a08a5a821cfc192cba22d1694157993ba2abb2099cb4162d0cf4ac7426a070xc0bc2cdc584800889b43ee874294aaae116cfd3ae4759951f3bf240557804697"
+}

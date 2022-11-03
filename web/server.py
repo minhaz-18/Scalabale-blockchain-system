@@ -15,7 +15,8 @@ sys.path.insert(1, user_end_dir)
 # print("nwsdsa", key_pair_relative)
 # sys.path.append(key_pair_relative)
 from key_pairs_address_generation import *
-
+from raw_tx_generator import *
+os.chdir(server_code_dir)
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
 
@@ -49,16 +50,10 @@ def gfg():
        block_number = request.form.get("block_number")
        sender_public_key = request.form.get("sender_public_key")
        sender_private_key = request.form.get("sender_private_key")
-       values = {
-           "sender_address": sender_address,
-           "receiver_address": receiver_address,
-           "amount": amount,
-           "block_number": block_number,
-           "sender_public_key": sender_public_key,
-           "sender_private_key": sender_private_key,
-       }
-       return json.dumps(values)
-    return render_template("confirmation.html")
+       sender_info = [[sender_address, block_number]]
+       receiver_info = [{receiver_address: amount}]
+    raw_output = raw_tx_main(sender_info,receiver_info,sender_public_key,sender_private_key)
+    return render_template("confirmation.html", raw_output = raw_output)
 
 
 if __name__ == '__main__':
