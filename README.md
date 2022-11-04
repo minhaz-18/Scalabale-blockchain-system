@@ -63,10 +63,10 @@ Transaction verification process describe
 * Put your local ip and port number that you forwarded in my_own_p2p_application_json.py (Show where with ss)
 
 ### Executing program
-There are two parts of this program. One is the user end where a user generates 
-a transaction and sends it to the validators. And the other part is the miner
-end where the miner validates the transaction that the user sent and adds this 
-transaction to the blockchain after validation.
+There are two parts of this program. One is the User End where a user either generates 
+a transaction and sends it to the validators or creates a new address and key pairs for receiving
+asset. And the other part is the Miner End where the miner validates the transaction that 
+the user sent and adds this transaction to the blockchain after validation.
 * For both ends at first run the server.py to start the web server. (How to do it?)
 * A web interface will be hosted at http://localhost:5000
 * Go to http://localhost:5000 in your browser (preferably Google Chrome) and use the 
@@ -94,7 +94,7 @@ a transaction.
   * To create a transaction
     * Click the generate transaction button in the user end page to go to the transaction generation page
     * Put sender address, receiver address, amount, block number, sender's public key and private key to the form
-    and hit the generate transaction button.
+    and hit generate transaction button.
     * The next page is for review the generated transaction.
     * Press the send button to send this transaction to the miners in the network.
 
