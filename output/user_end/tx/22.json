@@ -1,0 +1,17 @@
+{
+  "message": {
+    "SenderAddress": [
+      [
+        "fgfg",
+        "1"
+      ]
+    ],
+    "ReceiverAddress": [
+      {
+        "dsfasd": "10"
+      }
+    ],
+    "PublicKey": "10"
+  },
+  "signature": "0x7998b7e3c65067eda7c4e57422fdf2f7efa7aa33f75d31e6dd0be509dd94ecdc0x2db3cea3ef677bb5f970abe0116fb48e7e304cb4c0f16ab2d661b68adbf6de62"
+}

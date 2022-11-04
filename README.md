@@ -1,4 +1,11 @@
 # Scalabale blockchain system
+A public blockchain system that performs better than Bitcoin in terms of throughput 
+and storage requirements. Although this system is primarily based on 
+cryptocurrencies, it may also be applied to other domains such as healthcare, 
+supply chain management, etc. by making a few minor modifications to the verification process.
+
+
+## Description
 
 For many years, numerous cryptocurrencies have been supported by the 
 innovative technology known as blockchain. This decentralized system, 
@@ -6,12 +13,11 @@ despite having many unique characteristics, falls behind centralized
 currency systems in terms of scalability and cannot be adopted by other 
 platforms. Increasing throughput and reducing the dependence on huge storage 
 are the goals of this project.
-## Description
 
-An in-depth paragraph about your project and overview of use.
+System describe
 ![system overview](images/system_overview.PNG)
 
-Transaction verification
+Transaction verification process describe
 
 ## Getting Started
 
@@ -47,23 +53,25 @@ Transaction verification
 
 ### Installing
 
-* How/where to download your program
 * Either fork or download the project 
 * It is recommended to open this project in pycharm
-* Install all the dependencies
-* install ipfs
-* run ipfs daemon in cmd
-* forward a port in router
-* put your local ip and port number that you forwarded in my_own_p2p_application_json.py
+* Install all the dependencies (How to do it?)
+* Install ipfs (how to do it? give a link)
+* Open cmd or terminal and run the following command to initiate ipfs daemon
+* ``` ipfs daemon ```
+* Forward a port in router (how to do it? give a link)
+* Put your local ip and port number that you forwarded in my_own_p2p_application_json.py (Show where with ss)
 
 ### Executing program
 There are two parts of this program. One is the user end where a user generates 
 a transaction and sends it to the validators. And the other part is the miner
 end where the miner validates the transaction that the user sent and adds this 
 transaction to the blockchain after validation.
-* For both ends at first run the server.py to start the web server.
+* For both ends at first run the server.py to start the web server. (How to do it?)
 * A web interface will be hosted at http://localhost:5000
-* Go to http://localhost:5000 in your browser (preferably Google Chrome) and use the web interface according to the need.
+* Go to http://localhost:5000 in your browser (preferably Google Chrome) and use the 
+web interface according to the need (Either use User End to generate transaction/ receiver address or use 
+Miner End to validate the transactions)
 
 
 [comment]: <> (* How to run the program)
@@ -76,16 +84,20 @@ transaction to the blockchain after validation.
 
 [comment]: <> (```)
 #### User End
-  * How to run the program
-  * By going to http://localhost:5000 address in the browser a home page will be found
-  * Click the user end button to go to the user end page
-  * Click the button in the user end page to generate a new public-private key pair and an address.
-  * Store these information locally.
-  * Share the newly generated address with the sender that will make the transaction.
-  * The sender will then click the button in "" to go to the transaction generation page.
-  * In transaction generation page the sender will fill up a form with corresponding data and click the button to genrate a transaction.
-  * In the next page the sender/ user will review the transaction and press the button "send" to send the transaction to the miners.
-  * Step-by-step bullets
+  * By going to http://localhost:5000 address in the browser a home page will be found.
+  * Click the user end button to go to the user end page.
+  * There are two options: one is to generate a new address for receiving new assets and the other is to create
+a transaction.
+  * To create a new address
+    * Click the create address button in the user end page to generate a new public-private key pair and an address.
+    * Store these information locally.
+  * To create a transaction
+    * Click the generate transaction button in the user end page to go to the transaction generation page
+    * Put sender address, receiver address, amount, block number, sender's public key and private key to the form
+    and hit the generate transaction button.
+    * The next page is for review the generated transaction.
+    * Press the send button to send this transaction to the miners in the network.
+
 
 [comment]: <> (  ```)
 
@@ -93,9 +105,9 @@ transaction to the blockchain after validation.
 
 [comment]: <> (    ```)
 #### Miner End
-  * How to run the program
   * By going to http://localhost:5000 address in the browser a home page will be found.
-  * In the miner end page there is a button to start the mining process
+  * Click the miner end button to go to the miner end page.
+  * In the miner end page there is a button to start the mining process.
   * After clicking the button the system will start to verify transactions and generate raw block and hash block.
   * And will add these blocks to the corresponding blockchains and will broadcast the hash block among other miners.
 
