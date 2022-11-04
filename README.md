@@ -2,7 +2,7 @@
 A public blockchain system that performs better than Bitcoin in terms of throughput 
 and storage requirements. Although this system is primarily based on 
 cryptocurrencies, it may also be applied to other domains such as healthcare, 
-supply chain management, etc. by making a few minor modifications to the verification process.
+supply chain management, etc. by making a few modifications to the verification process.
 
 
 ## Description
