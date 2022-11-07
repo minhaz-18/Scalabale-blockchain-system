@@ -189,11 +189,11 @@ a transaction.
 
 ## Authors
 
-Minhaz Mahmud [@linkedin](https://www.linkedin.com/in/minhaz18) [@gmail](mailto:minhaz18061997@gmail.com)
+#### Minhaz Mahmud [@linkedin](https://www.linkedin.com/in/minhaz18) [@gmail](mailto:minhaz18061997@gmail.com)
 
-Md. Soharab Hossain Sohan
+#### Md. Soharab Hossain Sohan
 
-Faisal Alam Opu
+#### Faisal Alam Opu
 
 ## Version History
 
@@ -209,9 +209,13 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-Inspiration, code snippets, etc.
+[comment]: <> (Inspiration, code snippets, etc.)
 * [awesome-readme](https://github.com/matiassingers/awesome-readme)
-* [PurpleBooth](https://gist.github.com/PurpleBooth/109311bb0361f32d87a2)
-* [dbader](https://github.com/dbader/readme-template)
-* [zenorocha](https://gist.github.com/zenorocha/4526327)
-* [fvcproductions](https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46)
+
+[comment]: <> (* [PurpleBooth]&#40;https://gist.github.com/PurpleBooth/109311bb0361f32d87a2&#41;)
+
+[comment]: <> (* [dbader]&#40;https://github.com/dbader/readme-template&#41;)
+
+[comment]: <> (* [zenorocha]&#40;https://gist.github.com/zenorocha/4526327&#41;)
+
+[comment]: <> (* [fvcproductions]&#40;https://gist.github.com/fvcproductions/1bfc2d4aecb01a834b46&#41;)
