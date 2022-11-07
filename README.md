@@ -113,7 +113,7 @@ block locally instead of raw block.
 [link](https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/) or [link](https://www.youtube.com/watch?v=2G1ueMDgwxw).
 * Change two variables (my_machine_local_ip = your local ip and my_forwarded_port = your port number
 that you forwarded in previous step) in my_own_p2p_application_json.py file. 
-* Put your local ip and port number that you forwarded in my_own_p2p_application_json.py (Show where with ss)
+
 ![Change p2p](images/p2p_change.jpg)
 
 ### Executing program
