@@ -73,42 +73,58 @@ block locally instead of raw block.
 
 ### Dependencies
 
-* base58==2.0.1
-* certifi==2020.12.5
-* cffi==1.14.4
-* chardet==3.0.4
-* cryptography==3.3.1
-* ecdsa==0.16.1
-* idna==2.10
-* ipfshttpclient==0.6.1
-* jsonpickle==1.4.2
-* llvmlite==0.36.0
-* multiaddr==0.0.9
-* netaddr==0.8.0
-* numba==0.53.1
-* numpy==1.20.3
+* async-generator==1.10      
+* attrs==22.1.0
+* certifi==2022.6.15
+* cffi==1.15.1
+* click==8.1.3
+* colorama==0.4.5
+* cryptography==37.0.4
+* et-xmlfile==1.1.0
+* Flask==2.2.2
+* h11==0.13.0
+* idna==3.3
+* itsdangerous==2.1.2
+* Jinja2==3.1.2
+* jsonpickle==2.0.0
+* MarkupSafe==2.1.1
+* numpy==1.21.4
+* opencv-python==4.5.4.60
+* openpyxl==3.0.9
+* outcome==1.2.0
 * p2pnetwork==1.0
-* Pillow==8.2.0
+* pandas==1.4.1
+* Pillow==8.4.0
 * pycoin==0.80
-* pycparser==2.20
-* pytesseract==0.3.7
-* requests==2.25.0
-* six==1.15.0
-* starkbank==2.2.2
-* starkbank-ecdsa==1.0.0
-* tinyec==0.3.1
-* urllib3==1.26.2
-* varint==1.0.2
-* IPFS
+* pycparser==2.21
+* pyOpenSSL==22.0.0
+* PySocks==1.7.1
+* pytesseract==0.3.8
+* python-dateutil==2.8.2
+* pytz==2021.3
+* selenium==4.3.0
+* six==1.16.0
+* sniffio==1.2.0
+* sortedcontainers==2.4.0
+* trio==0.21.0
+* trio-websocket==0.9.2
+* urllib3==1.26.11
+* Werkzeug==2.2.2
+* wsproto==1.1.0
+* XlsxWriter==3.0.3
 
 ### Installing
 
 * Either fork or download the project 
 * It is recommended to open this project in pycharm
-* Install all the dependencies (How to do it?)
+* Install all the dependencies
+  * open terminal or cmd and go to the project directory
+  * write the following command in the terminal or cmd to install all the dependencies
+  * ``` pip install -r requirement.txt ```
+  
 * Install ipfs using the [link](https://docs.ipfs.tech/install/).
 * Open cmd or terminal and run the following command to initiate ipfs daemon
-* ``` ipfs daemon ```
+  * ``` ipfs daemon ```
 * Forward a port in router. Can take help from
 [link](https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/) or [link](https://www.youtube.com/watch?v=2G1ueMDgwxw).
 * Change two variables (my_machine_local_ip = your local ip and my_forwarded_port = your port number
