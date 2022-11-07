@@ -14,10 +14,60 @@ currency systems in terms of scalability and cannot be adopted by other
 platforms. Increasing throughput and reducing the dependence on huge storage 
 are the goals of this project.
 
-System describe
-![system overview](images/system_overview.PNG)
+### System overview
+The proposed system has two parts: one is User End and the other is Miner End. The User End is
+used to generate transaction and the Miner End is used to validate that transaction.
+#### User End
+##### Transaction Generation Process
+![Transaction generation](images/tx_generation.jpg)
+* At first the user/sender generates a message with the sending info (Sender address, Block number
+from where the sender gets his/her's asset), receiver info (Receiver address, Amount to be
+sent) and public key.
+* Following that the user generates a digital signature using his/her private key and message.
+* Finally, the raw/original transaction is ready after adding the digital signature with the message. 
+##### Transaction Sending Process
+![User end process](images/user_end_process.jpg)
+* After generating the raw transaction the user sends this transaction to the IPFS (InterPlanetary File System),
+a distributed system that has a feature of file storing.
+* IPFS returns a CID (Content Identifier) for the raw transaction. With this CID anybody can 
+fetch the raw transaction from IPFS. (N.B. If the content of transaction changes the corresponding
+CID also changes. So, the transaction can not be tempered or modified in IPFS.)
+* The user then sends this CID of his/her transaction to the miners through a peer to peer (p2p)
+network.
 
-Transaction verification process describe
+#### Miner End
+##### Miner End Process Overview
+![Miner end process](images/miner_end.jpg)
+* At first the miner receives the transaction CID from the miner through p2p and fetches the 
+original/ raw transaction from IPFS.
+* After that, the transaction goes through a verification process that has multiple checks such as double-spending
+check, balance check and authentication check.
+* ##### (Transaction verification process describe) will be added soon
+* If the transaction passes all the checks the CID of the corresponding transaction is added to the mempool
+otherwise the transaction is discarded.
+* After a certain number of transactions are verified (determined by miner), the block generation process starts.
+* In the block generation process, at first a raw block is generated with the transaction CIDs using
+POW (proof of work) consensus.
+* Then the raw block is added to the IPFS and again IPFS returns a CID for the corresponding block.
+  (N.B. This raw block is not distributed among miners unlike bitcoin.)
+* With the CID of the raw block the miner again generates a block named Hash block using the same consensus, POW.
+* Finally, this hash block is broadcasted among other miners through p2p. All the miners in the 
+network stores this block locally after verifying the block is valid.
+
+### Achievements
+#### Increasing Throughput
+As the raw block is not shared among the miners and not stored locally, the size of this 
+block is up to the miner.  This block can accommodate a numerous number of transactions without worrying 
+about the network's bandwidth, latency, or dependence on local storage. Additionally, since 
+the CID is uniform in size and less than the original/raw transaction, more 
+transaction CIDs can be added to the raw block. Throughput can be raised in this manner.
+
+#### Reducing Latency and Storage Dependency
+The size of the hash block is very small and constant which is around 300 Bytes. 
+By distributing this small sized block to the network, the latency can be reduced. 
+The storage dependency also reduces significantly, as all the miners store the hash 
+block locally instead of raw block.
+
 
 ## Getting Started
 
@@ -56,19 +106,25 @@ Transaction verification process describe
 * Either fork or download the project 
 * It is recommended to open this project in pycharm
 * Install all the dependencies (How to do it?)
-* Install ipfs (how to do it? give a link)
+* Install ipfs using the [link](https://docs.ipfs.tech/install/).
 * Open cmd or terminal and run the following command to initiate ipfs daemon
 * ``` ipfs daemon ```
-* Forward a port in router (how to do it? give a link)
+* Forward a port in router. Can take help from
+[link](https://www.noip.com/support/knowledgebase/general-port-forwarding-guide/) or [link](https://www.youtube.com/watch?v=2G1ueMDgwxw).
+* Change two variables (my_machine_local_ip = your local ip and my_forwarded_port = your port number
+that you forwarded in previous step) in my_own_p2p_application_json.py file. 
 * Put your local ip and port number that you forwarded in my_own_p2p_application_json.py (Show where with ss)
+![Change p2p](images/p2p_change.jpg)
 
 ### Executing program
 There are two parts of this program. One is the User End where a user either generates 
 a transaction and sends it to the validators or creates a new address and key pairs for receiving
 asset. And the other part is the Miner End where the miner validates the transaction that 
 the user sent and adds this transaction to the blockchain after validation.
-* For both ends at first run the server.py to start the web server. (How to do it?)
-* A web interface will be hosted at http://localhost:5000
+* For both ends at first start the web server by following either one step.
+  * Open pycharm or Vscode and run server.py
+  * Open terminal or cmd and go to the "project directory / web" and run server.py with python interpreter.
+* A web interface will be hosted at http://localhost:5000.
 * Go to http://localhost:5000 in your browser (preferably Google Chrome) and use the 
 web interface according to the need (Either use User End to generate transaction/ receiver address or use 
 Miner End to validate the transactions)
@@ -120,18 +176,24 @@ a transaction.
 [comment]: <> (    code blocks for commands)
 
 [comment]: <> (    ```)
-## Help
 
-Any advise for common problems or issues.
-```
-command to run if program contains helper info
-```
+[comment]: <> (## Help)
+
+[comment]: <> (Any advise for common problems or issues.)
+
+[comment]: <> (```)
+
+[comment]: <> (command to run if program contains helper info)
+
+[comment]: <> (```)
 
 ## Authors
 
-Minhaz Mamud  
-[@linkedin](https://www.linkedin.com/in/minhaz18)  
-[@gmail](mailto:minhaz18061997@gmail.com)
+Minhaz Mahmud [@linkedin](https://www.linkedin.com/in/minhaz18) [@gmail](mailto:minhaz18061997@gmail.com)
+
+Md. Soharab Hossain Sohan
+
+Faisal Alam Opu
 
 ## Version History
 
@@ -143,7 +205,7 @@ Minhaz Mamud
 
 ## License
 
-This project is licensed under the [NAME HERE] License - see the LICENSE.md file for details
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
