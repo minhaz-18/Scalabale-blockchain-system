@@ -195,11 +195,13 @@ a transaction.
 
 #### Faisal Alam Opu
 
-## Version History
+[comment]: <> (## Version History)
 
-* 0.1
-    * Initial Release
-    * See [commit change]() or See [release history]()
+[comment]: <> (* 0.1)
+
+[comment]: <> (    * Initial Release)
+
+[comment]: <> (    * See [commit change]&#40;&#41; or See [release history]&#40;&#41;)
 
 
 
