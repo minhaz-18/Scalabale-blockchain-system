@@ -37,6 +37,9 @@ def my_link():
 @app.route('/client-area/')
 def my_link1():
     return render_template('index.html')
+@app.route('/miner-area/')
+def miner_area():
+    return render_template('miner-end.html')
 @app.route('/tx-generation/')
 def my_link2():
     return render_template('tx-generation.html')
