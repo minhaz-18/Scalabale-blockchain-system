@@ -1,0 +1,17 @@
+{
+  "message": {
+    "SenderAddress": [
+      [
+        "dsfsdfsd",
+        "1"
+      ]
+    ],
+    "ReceiverAddress": [
+      {
+        "dasda": "13"
+      }
+    ],
+    "PublicKey": "34353"
+  },
+  "signature": "0xe09dafcaabca464002ac649bcabb5844d8ff9afd80f363d8fd315ce8ad6508cb0x20f5f31c36e55c8013ee79f138bb366f8021316085b5632fb8a31415a6b546c7"
+}

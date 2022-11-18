@@ -10,9 +10,7 @@ os.chdir("../..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
 from folder_structure import output_hash_block, output_raw_block, verified_tx_mempool
-print("raw block generation code directory after folder structure: ", os.getcwd())
-raw_block_dir_2 = output_raw_block()
-print("raw_block_dir_1: ", output_raw_block())
+os.chdir(raw_block_generation_code_dir)
 
 
 def raw_block(data):
@@ -97,13 +95,3 @@ def raw_block_main(num):
             data.update(new_dict)
         tx = data
         raw_block(tx)
-
-
-starting_time = time.time()
-raw_block_main(21)
-finishing_time = time.time()
-dif = finishing_time - starting_time
-print("starting_time: ", time.ctime(starting_time))
-print("finishing_time: ", time.ctime(finishing_time))
-print("required time in sec: ", dif)
-print("required time: ", time.ctime(dif))

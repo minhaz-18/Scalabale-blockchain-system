@@ -56,7 +56,7 @@ def gfg():
        sender_info = [[sender_address, block_number]]
        receiver_info = [{receiver_address: amount}]
     raw_output = raw_tx_main(sender_info,receiver_info,sender_public_key,sender_private_key)
-    return render_template("confirmation.html", raw_output = raw_output)
+    return render_template("confirmation.html", raw_output=raw_output)
 
 
 if __name__ == '__main__':

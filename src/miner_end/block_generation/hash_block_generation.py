@@ -9,7 +9,8 @@ os.chdir("../..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
 from folder_structure import output_hash_block, output_raw_block_cid, p2p_sending_block_cid, verified_tx_mempool, verified_tx_used_mempool
-print("hash block generation code directory after folder structure: ", os.getcwd())
+os.chdir(hash_block_generation_code_dir)
+
 
 
 def hash_block_generation():
@@ -104,12 +105,4 @@ def trasfer_mempool_data_after_hash_block_generation():
     print("mempool and used_mempool folder is updated")
 
 
-starting_time = time.time()
-hash_block_generation()
-finishing_time = time.time()
-dif = finishing_time - starting_time
-print("starting_time: ", time.ctime(starting_time))
-print("finishing_time: ", time.ctime(finishing_time))
-print("required time in sec: ", dif)
-print("required time: ", time.ctime(dif))
-trasfer_mempool_data_after_hash_block_generation()
+
