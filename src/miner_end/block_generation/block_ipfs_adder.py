@@ -10,7 +10,6 @@ os.chdir("../..")
 src_dir = os.getcwd()
 sys.path.insert(1, src_dir)  # for importing folder_structure.py
 from folder_structure import output_raw_block, output_raw_block_cid
-
 os.chdir(block_ipfs_adder_code_dir)
 
 
