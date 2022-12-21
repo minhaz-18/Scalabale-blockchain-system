@@ -14,8 +14,10 @@ sys.path.insert(1, user_end_dir)
 # key_pair_relative = src_user_end()[0]
 # print("nwsdsa", key_pair_relative)
 # sys.path.append(key_pair_relative)
+from tx_adder_to_ipfs import *
 from key_pairs_address_generation import *
 from raw_tx_generator import *
+from tx_adder_to_ipfs import *
 os.chdir(server_code_dir)
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -57,7 +59,11 @@ def gfg():
        receiver_info = [{receiver_address: amount}]
     raw_output = raw_tx_main(sender_info,receiver_info,sender_public_key,sender_private_key)
     return render_template("confirmation.html", raw_output=raw_output)
-
+def miner_page():
+    ipfs_add_main()
+    addresses1 = json.loads(addresses)
+    print(addresses)
+    return render_template('miner-end.html', addresses=addresses1)
 
 if __name__ == '__main__':
     app.run(debug=True)
