@@ -81,13 +81,13 @@ def p2p(my_machine_loacl_ip, my_forwarded_port, connected_machine_1_public_ip, c
     print('end test')
 
 
-my_machine_loacl_ip = "192.168.0.106"
-my_forwarded_port = 8083
-
-connected_machine_1_public_ip = "144.48.162.18"
-connected_machine_1_forwarded_port = 8081
-connected_machine_2_public_ip = "144.48.162.18"
-connected_machine_2_forwarded_port = 8082
+# my_machine_loacl_ip = "192.168.0.106"
+# my_forwarded_port = 8083
+#
+# connected_machine_1_public_ip = "144.48.162.18"
+# connected_machine_1_forwarded_port = 8081
+# connected_machine_2_public_ip = "144.48.162.18"
+# connected_machine_2_forwarded_port = 8082
 
 
 # p2p(my_machine_loacl_ip, my_forwarded_port, connected_machine_1_public_ip, connected_machine_1_forwarded_port, connected_machine_2_public_ip, connected_machine_2_forwarded_port)

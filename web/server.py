@@ -18,6 +18,7 @@ from tx_adder_to_ipfs import *
 from key_pairs_address_generation import *
 from raw_tx_generator import *
 from tx_adder_to_ipfs import *
+from my_own_p2p_application_json import *
 os.chdir(server_code_dir)
 app = Flask(__name__)
 app = Flask(__name__, static_url_path='/static')
@@ -44,6 +45,14 @@ def miner_area():
     return render_template('miner-end.html')
 @app.route('/tx-generation/')
 def my_link2():
+    ipfs_add_main()
+    my_machine_loacl_ip = "192.168.0.106"
+    my_forwarded_port = 8083
+    connected_machine_1_public_ip = "144.48.162.18"
+    connected_machine_1_forwarded_port = 8081
+    connected_machine_2_public_ip = "144.48.162.18"
+    connected_machine_2_forwarded_port = 8082
+    p2p(my_machine_loacl_ip, my_forwarded_port, connected_machine_1_public_ip, connected_machine_1_forwarded_port,connected_machine_2_public_ip, connected_machine_2_forwarded_port)
     return render_template('tx-generation.html')
 @app.route('/confirmation-page/', methods =["GET", "POST"])
 def gfg():
